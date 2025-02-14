@@ -1,19 +1,32 @@
 package com.mipagina.update_product_service.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
+@Schema(description = "Product entity representing a product in the system")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(description = "Unique identifier of the product", example = "1")
     private Long id_product;
+
+    @Schema(description = "Name of the product", example = "Margherita Pizza", required = true)
     private String name;
+
+    @Schema(description = "Detailed description of the product", example = "Classic Italian pizza with mozzarella, tomato, and basil")
     private String description;
+
+    @Schema(description = "Price of the product", example = "12.99", required = true)
     private Double price;
+
+    @Schema(description = "Category ID to which the product belongs", example = "2", required = true)
     private Long id_category;
+
+    @Schema(description = "Product availability status", example = "true")
     private Boolean availability;
 
     public Long getId_product() {
